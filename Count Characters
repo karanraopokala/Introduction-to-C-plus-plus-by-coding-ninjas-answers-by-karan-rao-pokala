@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        
+        int digits = 0; 
+        int spaces = 0;
+        int chars = 0;
+        
+        while (s.hasNextLine()) {
+            String str = s.nextLine();
+            int len = str.length();
+            int i = 0;
+            while (i < len) {
+                if(str.charAt(i) >= 'a' && str.charAt(i) <= 'z') 
+                    chars += 1;
+                else if(str.charAt(i) >= '0' && str.charAt(i) <= '9') 
+                    digits += 1;
+                else if(str.charAt(i) == ' ' || str.charAt(i) == '\t')
+                    spaces += 1;
+                i++;
+            }
+            if (str.charAt(len - 1) == '$') {
+                break;
+            }
+            if (s.hasNextLine())
+                spaces++; // For new Line
+        }
+        System.out.println(chars + " " + digits + " " + spaces);
+    }
+}
